@@ -34,4 +34,8 @@ public class UserService {
         }
         return userRepository.update(updateUserDto , id);
     }
+
+    public void deleteUserById(String id) {
+        userRepository.deleteUserById(id);
+    }
 }
