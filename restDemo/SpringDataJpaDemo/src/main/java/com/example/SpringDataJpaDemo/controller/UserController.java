@@ -6,10 +6,9 @@ import dto.UserDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -20,5 +19,31 @@ public class UserController {
     public ResponseEntity<UserDto> createUser(@RequestBody CreateUserDto createUserDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveUser(createUserDto));
     }
+    @GetMapping
+    public  ResponseEntity<List<UserDto>> getusers(){
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getUsers());
+    }
+    @GetMapping("/users/{id}")
+    public ResponseEntity<Void> getUser(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getUserById(id));
+
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id){
+        userService.deleteUser(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
+    }
+    @PatchMapping("/users/{id}")
+    public ResponseEntity<UserDto> patchUser(@RequestBody CreateUserDto patchUserDto){
+         return ResponseEntity.status(HttpStatus.OK).body(userService.patchUser(id,patchUserDto));
+
+    }
+    @PutMapping("/users/{id}")
+    public ResponseEntity<UserDto> updateUser(@RequestBody CreateUserDto updateUserDto, @PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(userService.updateUser(updateUserDto, id));
+
+    }
+
 
 }
