@@ -23,7 +23,7 @@ public class UserController {
     public  ResponseEntity<List<UserDto>> getusers(){
         return ResponseEntity.status(HttpStatus.OK).body(userService.getUsers());
     }
-    @GetMapping
+    @GetMapping("/paginated")
     public  ResponseEntity<List<UserDto>> getusersPaginated(@RequestParam int page, @RequestParam int pageSize,
                                                             @RequestParam(defaultValue = "asc") String direction,
                                                             @RequestParam(defaultValue = "name") String sortBy ){

@@ -7,8 +7,12 @@ import dto.UserDto;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.jspecify.annotations.Nullable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,7 +66,16 @@ public class UserService {
         return null;
     }
 
-    public @Nullable List<UserDto> getUsersPaginated(int page, int pageSize, String direction, String sortBy) {
+    public List<UserDto> getUsersPaginated(int page, int pageSize, String direction, String sortBy) {
+        Sort sort ;
+        sort = direction.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending():
+                Sort.by(sortBy).descending();
+
+        Pageable pageable = PageRequest.of(page,pageSize,sort);
+        Page<User> userPage = userRepository.findAll(pageable);
+        List<UserDto> userDtoList = new ArrayList<>();
+        userPage.forEach(user -> userDtoList.add(new UserDto(user.getId(), user.getName(), user.getEmail())));
+           return userDtoList;
     }
 }
 
