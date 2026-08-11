@@ -49,15 +49,25 @@ public class UserService {
 
     }
     @Transactional
-    public @Nullable UserDto updateUser(CreateUserDto updateUserDto, Long id) {
+    public UserDto updateUser(CreateUserDto updateUserDto, Long id) {
         User user = userRepository.findById(id).orElseThrow();
         user.setName(updateUserDto.getName());
         user.setEmail(updateUserDto.getEmail());
         return new UserDto(user.getId(), user.getName(), user.getEmail());
 // no save() used here
     }
+    @Transactional
+    public  UserDto patchUser(Long id, CreateUserDto patchUserDto) {
+        User user =userRepository.findById(id).orElseThrow();
+        if (patchUserDto.getName() != null){
+            user.setName(patchUserDto.getName());
+        }
+        if(patchUserDto.getEmail() != null){
+            user.setEmail(patchUserDto.getEmail());
+        }
+        return new UserDto(user.getId(), user.getName(), user.getEmail());
+        //no save()
 
-    public @Nullable UserDto patchUser(Long id, CreateUserDto patchUserDto) {
 
     }
 }

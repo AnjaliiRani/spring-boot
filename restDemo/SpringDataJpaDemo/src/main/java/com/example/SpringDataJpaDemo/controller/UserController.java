@@ -23,7 +23,7 @@ public class UserController {
     public  ResponseEntity<List<UserDto>> getusers(){
         return ResponseEntity.status(HttpStatus.OK).body(userService.getUsers());
     }
-    @GetMapping("/users/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUser(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(userService.getUserById(id));
 
@@ -34,12 +34,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 
     }
-    @PatchMapping("/users/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<UserDto> patchUser( @PathVariable Long id, @RequestBody CreateUserDto patchUserDto){
          return ResponseEntity.status(HttpStatus.OK).body(userService.patchUser(id, patchUserDto));
 
     }
-    @PutMapping("/users/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<UserDto> updateUser(@RequestBody CreateUserDto updateUserDto, @PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(userService.updateUser(updateUserDto, id));
 
