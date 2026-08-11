@@ -20,7 +20,7 @@ public class OrderController {
     public ResponseEntity<OrderDto> createOrder(@PathVariable Long userId ,@RequestBody CreateOrderDto createOrderDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(orderService.createOrder(userId ,createOrderDto));
     }
-
+   @GetMapping
     public ResponseEntity<List<OrderDto>> getOrderByUserId(@PathVariable Long userId){
          return ResponseEntity.status(HttpStatus.OK).body(orderService.getOrderByUserId(userId));
     }

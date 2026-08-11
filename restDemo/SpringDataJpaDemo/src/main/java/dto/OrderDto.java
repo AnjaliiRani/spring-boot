@@ -1,6 +1,5 @@
 package dto;
 
-import com.example.SpringDataJpaDemo.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +10,6 @@ import lombok.Setter;
 public class OrderDto {
     private Long id;
      private String productName;
-     private User user;
+     private UserDto user;
 
 }
