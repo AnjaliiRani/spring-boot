@@ -6,6 +6,7 @@ import com.example.SpringDataJpaDemo.repository.OrderRepository;
 import com.example.SpringDataJpaDemo.repository.UserRepository;
 import dto.CreateOrderDto;
 import dto.OrderDto;
+import dto.UserDto;
 import lombok.AllArgsConstructor;
 import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
@@ -26,14 +27,16 @@ public class OrderService {
         order.setProductName(createOrderDto.getProductName());
 
         Order savedOrder = orderRepository.save(order);
-        return new OrderDto(savedOrder.getId(), savedOrder.getProductName(), savedOrder.getUser());
+        return new OrderDto(savedOrder.getId(), savedOrder.getProductName(),
+                new UserDto(savedOrder.getUser().getId(),savedOrder.getUser().getName(),savedOrder.getUser().getEmail()));
     }
 
     public List<OrderDto> getOrderByUserId(Long userId) {
         List<Order> orders = orderRepository.findByUserId(userId);
         List<OrderDto> orderDtos = new ArrayList<>();
         orders.forEach(order ->{
-            OrderDto orderDto = new OrderDto(order.getId(), order.getProductName(),order.getUser());
+            OrderDto orderDto = new OrderDto(order.getId(), order.getProductName(),
+                    new UserDto(order.getUser().getId(),order.getUser().getName(),order.getUser().getEmail()));
             orderDtos.add(orderDto);
 
         });

@@ -56,18 +56,30 @@ public class UserService {
         return new UserDto(user.getId(), user.getName(), user.getEmail());
 // no save() used here
     }
+
     @Transactional
-    public  UserDto patchUser(Long id, CreateUserDto patchUserDto) {
-        User user =userRepository.findById(id).orElseThrow();
-        if (patchUserDto.getName() != null){
-            user.setName(patchUserDto.getName());
-        }
-        if(patchUserDto.getEmail() != null){
-            user.setEmail(patchUserDto.getEmail());
-        }
-        return new UserDto(user.getId(), user.getName(), user.getEmail());
-        //no save()
+    public UserDto patchUser(Long id, CreateUserDto patchUserDto) {
+        return null;
+    }
 
-
+    public @Nullable List<UserDto> getUsersPaginated(int page, int pageSize, String direction, String sortBy) {
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

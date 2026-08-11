@@ -23,6 +23,12 @@ public class UserController {
     public  ResponseEntity<List<UserDto>> getusers(){
         return ResponseEntity.status(HttpStatus.OK).body(userService.getUsers());
     }
+    @GetMapping
+    public  ResponseEntity<List<UserDto>> getusersPaginated(@RequestParam int page, @RequestParam int pageSize,
+                                                            @RequestParam(defaultValue = "asc") String direction,
+                                                            @RequestParam(defaultValue = "name") String sortBy ){
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getUsersPaginated(page,pageSize,direction,sortBy));
+    }
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUser(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(userService.getUserById(id));
