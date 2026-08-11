@@ -24,7 +24,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userService.getUsers());
     }
     @GetMapping("/users/{id}")
-    public ResponseEntity<Void> getUser(@PathVariable Long id){
+    public ResponseEntity<UserDto> getUser(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(userService.getUserById(id));
 
     }
@@ -35,8 +35,8 @@ public class UserController {
 
     }
     @PatchMapping("/users/{id}")
-    public ResponseEntity<UserDto> patchUser(@RequestBody CreateUserDto patchUserDto){
-         return ResponseEntity.status(HttpStatus.OK).body(userService.patchUser(id,patchUserDto));
+    public ResponseEntity<UserDto> patchUser( @PathVariable Long id, @RequestBody CreateUserDto patchUserDto){
+         return ResponseEntity.status(HttpStatus.OK).body(userService.patchUser(id, patchUserDto));
 
     }
     @PutMapping("/users/{id}")

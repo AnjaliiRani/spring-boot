@@ -4,6 +4,7 @@ import com.example.SpringDataJpaDemo.entities.User;
 import com.example.SpringDataJpaDemo.repository.UserRepository;
 import dto.CreateUserDto;
 import dto.UserDto;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class UserService {
         return new UserDto(savedUser.getId(), savedUser.getName(), savedUser.getEmail());
     }
 
-    public @Nullable List<UserDto> getUsers() {
+    public List<UserDto> getUsers() {
         List<User> users = new ArrayList<>();
         users = userRepository.findAll();
         List<UserDto> userDtoList = new ArrayList<>();
@@ -34,5 +35,29 @@ public class UserService {
             userDtoList.add(userDto);
         }
         return userDtoList;
+    }
+
+    public  UserDto getUserById(Long id) {
+        User user = userRepository.findById(id).orElseThrow();
+        return new UserDto(user.getId(), user.getName(), user.getEmail());
+
+
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+
+    }
+    @Transactional
+    public @Nullable UserDto updateUser(CreateUserDto updateUserDto, Long id) {
+        User user = userRepository.findById(id).orElseThrow();
+        user.setName(updateUserDto.getName());
+        user.setEmail(updateUserDto.getEmail());
+        return new UserDto(user.getId(), user.getName(), user.getEmail());
+// no save() used here
+    }
+
+    public @Nullable UserDto patchUser(Long id, CreateUserDto patchUserDto) {
+
     }
 }
