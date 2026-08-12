@@ -23,8 +23,13 @@ public class GlobalExceptionHandler {
             fieldErrors.put(error.getField(), error.getDefaultMessage());
         } );
         StringBuilder errorMsg = new StringBuilder();
+        boolean isFirst = true;
         for (String field: fieldErrors.keySet()){
-            errorMsg.append(field).append(" : ").append(fieldErrors.get(field)).append("\n");
+            if(!isFirst) {
+                errorMsg.append(", ");
+            }
+            isFirst = false;
+            errorMsg.append(field).append(" : ").append(fieldErrors.get(field)).append(", ");
 
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponseDto
