@@ -18,8 +18,16 @@ public class GlobalExceptionHandler {
     }
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponseDto> handleMethodArgumentNotValidExceptionException(MethodArgumentNotValidException ex){
-        HashMap<String,String>  fieldsErroesMap = new HashMap<>();
+        HashMap<String,String>  fieldErrors = new HashMap<>();
+        ex.getBindingResult().getFieldErrors().forEach(error ->{
+            fieldErrors.put(error.getField(), error.getDefaultMessage());
+        } );
+        StringBuilder errorMsg = new StringBuilder();
+        for (String field: fieldErrors.keySet()){
+            errorMsg.append(field).append(" : ").append(fieldErrors.get(field)).append("\n");
+
+        }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponseDto
-                ("INVALID_INPUT", ex.getBindingResult().getFieldError().toString()));
+                ("INVALID_INPUT", errorMsg.toString()));
     }
 }
