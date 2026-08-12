@@ -43,7 +43,9 @@ public class UserService {
     }
 
     public  UserDto getUserById(Long id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found with id"));
+        User user = userRepository.findById(id).
+                orElseThrow(() -> new UserNotFoundException("User not found with id" + id));
+
         return new UserDto(user.getId(), user.getName(), user.getEmail());
 
 
