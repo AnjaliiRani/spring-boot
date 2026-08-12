@@ -1,6 +1,7 @@
 package com.example.SpringDataJpaDemo.service;
 
 import com.example.SpringDataJpaDemo.entities.User;
+import com.example.SpringDataJpaDemo.exception.UserNotFoundException;
 import com.example.SpringDataJpaDemo.repository.UserRepository;
 import dto.CreateUserDto;
 import dto.UserDto;
@@ -42,7 +43,7 @@ public class UserService {
     }
 
     public  UserDto getUserById(Long id) {
-        User user = userRepository.findById(id).orElseThrow();
+        User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found with id"));
         return new UserDto(user.getId(), user.getName(), user.getEmail());
 
 
