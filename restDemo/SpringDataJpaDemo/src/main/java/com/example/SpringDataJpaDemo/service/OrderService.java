@@ -23,8 +23,8 @@ public class OrderService {
     private final UserRepository userRepository;
 @Transactional
     public OrderDto createOrder(Long userId, CreateOrderDto createOrderDto) {
-    User user = userRepository.findById(id).
-            orElseThrow(() -> new UserNotFoundException("User not found with id" + id));
+    User user = userRepository.findById(userId).
+            orElseThrow(() -> new UserNotFoundException("User not found with id" + userId));
 
         Order order = new Order();
         order.setUser(user);
