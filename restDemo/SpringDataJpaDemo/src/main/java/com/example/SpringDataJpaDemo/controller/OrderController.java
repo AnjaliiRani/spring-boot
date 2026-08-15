@@ -2,7 +2,9 @@ package com.example.SpringDataJpaDemo.controller;
 
 import com.example.SpringDataJpaDemo.service.OrderService;
 import dto.CreateOrderDto;
+import dto.CreateUserDto;
 import dto.OrderDto;
+import dto.UserDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +30,11 @@ public class OrderController {
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         OrderService.deleteUser(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<UserDto> updateUser(@RequestBody CreateUserDto updateUserDto, @PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.updateOrder(updateUserDto, id));
+
     }
 
 
