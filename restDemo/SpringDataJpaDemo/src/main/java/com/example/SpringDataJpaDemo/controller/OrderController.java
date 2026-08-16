@@ -26,29 +26,5 @@ public class OrderController {
     public ResponseEntity<List<OrderDto>> getOrderByUserId(@PathVariable Long userId){
          return ResponseEntity.status(HttpStatus.OK).body(orderService.getOrderByUserId(userId));
     }
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        OrderService.deleteUser(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-    }
-    @PutMapping("/{id}")
-    public ResponseEntity<UserDto> updateUser(@RequestBody CreateUserDto updateUserDto, @PathVariable Long id){
-        return ResponseEntity.status(HttpStatus.OK).body(orderService.updateOrder(updateUserDto, id))
-
-    }
-    @PatchMapping("/{id}")
-    public ResponseEntity<UserDto> patchUser( @PathVariable Long id, @RequestBody CreateUserDto patchUserDto){
-        return ResponseEntity.status(HttpStatus.OK).body(userService.patchUser(id, patchUserDto));
-
-    }
-    @PutMapping("/{id}")
-    public ResponseEntity<UserDto> updateUser(@RequestBody CreateUserDto updateUserDto, @PathVariable Long id){
-        return ResponseEntity.status(HttpStatus.OK).body(orderService.updateOrder(updateUserDto, id))
-
-
-
-
-
-
 
     }
