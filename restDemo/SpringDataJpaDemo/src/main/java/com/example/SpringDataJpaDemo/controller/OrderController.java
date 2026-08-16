@@ -33,7 +33,7 @@ public class OrderController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<UserDto> updateUser(@RequestBody CreateUserDto updateUserDto, @PathVariable Long id){
-        return ResponseEntity.status(HttpStatus.OK).body(orderService.updateOrder(updateUserDto, id));
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.updateOrder(updateUserDto, id))
 
     }
     @PatchMapping("/{id}")
@@ -41,15 +41,14 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.OK).body(userService.patchUser(id, patchUserDto));
 
     }
-    @PatchMapping("/{id}")
-    public ResponseEntity<UserDto> patchUser( @PathVariable Long id, @RequestBody CreateUserDto patchUserDto){
-        return ResponseEntity.status(HttpStatus.OK).body(userService.patchUser(id, patchUserDto));
+    @PutMapping("/{id}")
+    public ResponseEntity<UserDto> updateUser(@RequestBody CreateUserDto updateUserDto, @PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.updateOrder(updateUserDto, id))
+
+
+
+
+
+
 
     }
-
-
-
-
-
-
-}
