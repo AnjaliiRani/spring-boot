@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/users/{userId}/orders") // orders associate with users if there will be no users then there will be bo orders so this is the standard way of writing that we are maintaining
+//@RequestMapping("/api/v1/users/{userId}/orders") // orders associate with users if there will be no users then there will be bo orders so this is the standard way of writing that we are maintaining
 public class OrderController {
     private  final OrderService orderService;
 
