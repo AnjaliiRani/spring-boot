@@ -1,8 +1,8 @@
-package com.example.SpringDataJpaDemo.service;
+package com.example.SpringBootJWT.service;
 
-import com.example.SpringDataJpaDemo.entities.User;
-import com.example.SpringDataJpaDemo.exception.UserNotFoundException;
-import com.example.SpringDataJpaDemo.repository.UserRepository;
+import com.example.SpringBootJWT.entities.User;
+import com.example.SpringBootJWT.exception.UserNotFoundException;
+import com.example.SpringBootJWT.repository.UserRepository;
 import dto.CreateUserDto;
 import dto.UserDto;
 import jakarta.transaction.Transactional;

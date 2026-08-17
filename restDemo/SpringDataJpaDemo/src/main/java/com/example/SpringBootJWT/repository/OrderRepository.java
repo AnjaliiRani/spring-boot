@@ -1,6 +1,6 @@
-package com.example.SpringDataJpaDemo.repository;
+package com.example.SpringBootJWT.repository;
 
-import com.example.SpringDataJpaDemo.entities.Order;
+import com.example.SpringBootJWT.entities.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

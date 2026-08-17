@@ -1,10 +1,8 @@
-package com.example.SpringDataJpaDemo.controller;
+package com.example.SpringBootJWT.controller;
 
-import com.example.SpringDataJpaDemo.service.OrderService;
+import com.example.SpringBootJWT.service.OrderService;
 import dto.CreateOrderDto;
-import dto.CreateUserDto;
 import dto.OrderDto;
-import dto.UserDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.example.SpringDataJpaDemo.security;
+package com.example.SpringBootJWT.security;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 

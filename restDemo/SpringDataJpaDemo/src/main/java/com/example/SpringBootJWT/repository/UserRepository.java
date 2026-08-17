@@ -1,14 +1,17 @@
-package com.example.SpringDataJpaDemo.repository;
+package com.example.SpringBootJWT.repository;
 
-import com.example.SpringDataJpaDemo.entities.User;
-import org.springframework.data.domain.Example;
+import com.example.SpringBootJWT.entities.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 public interface UserRepository extends JpaRepository<User,Long>{
     @Override
      Page<User> findAll(Pageable pageable);
+    Optional<User> findByEmail(String email);
+
 
 }
 

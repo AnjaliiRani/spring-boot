@@ -1,6 +1,6 @@
-package com.example.SpringDataJpaDemo.controller;
+package com.example.SpringBootJWT.controller;
 
-import com.example.SpringDataJpaDemo.service.AuthService;
+import com.example.SpringBootJWT.service.AuthService;
 import dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

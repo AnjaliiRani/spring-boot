@@ -1,16 +1,15 @@
-package com.example.SpringDataJpaDemo.service;
+package com.example.SpringBootJWT.service;
 
-import com.example.SpringDataJpaDemo.entities.Order;
-import com.example.SpringDataJpaDemo.entities.User;
-import com.example.SpringDataJpaDemo.exception.UserNotFoundException;
-import com.example.SpringDataJpaDemo.repository.OrderRepository;
-import com.example.SpringDataJpaDemo.repository.UserRepository;
+import com.example.SpringBootJWT.entities.Order;
+import com.example.SpringBootJWT.entities.User;
+import com.example.SpringBootJWT.exception.UserNotFoundException;
+import com.example.SpringBootJWT.repository.OrderRepository;
+import com.example.SpringBootJWT.repository.UserRepository;
 import dto.CreateOrderDto;
 import dto.OrderDto;
 import dto.UserDto;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

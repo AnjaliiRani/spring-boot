@@ -1,9 +1,8 @@
-package com.example.SpringDataJpaDemo.controller;
+package com.example.SpringBootJWT.controller;
 
-import com.example.SpringDataJpaDemo.service.UserService;
+import com.example.SpringBootJWT.service.UserService;
 import dto.CreateUserDto;
 import dto.UserDto;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

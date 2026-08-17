@@ -1,4 +1,4 @@
-package com.example.SpringDataJpaDemo.security;
+package com.example.SpringBootJWT.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

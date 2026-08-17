@@ -1,4 +1,4 @@
-package com.example.SpringDataJpaDemo.entities;
+package com.example.SpringBootJWT.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
