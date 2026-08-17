@@ -1,22 +1,22 @@
 -- Seed users (idempotent)
 
 INSERT INTO users (name, email ,password ,role)
-SELECT 'Alice' AS name, 'alice@example.com' AS email
-'' AS password, 'USER' AS role
+SELECT 'Alice' AS name, 'alice@example.com' AS email,
+'$2a$10$DKttTHsOiJXYOpD0ulREqOke67Nh.XGmYmDT9eqQ46iNcB1V6Drm.' AS password, 'USER' AS role
 WHERE NOT EXISTS (
     SELECT 1 FROM users WHERE email = 'alice@example.com'
 );
 
 INSERT INTO users (name, email,password ,role)
-SELECT 'Bob' AS name, 'bob@example.com' AS email
-'' AS password, 'USER' AS role
+SELECT 'Bob' AS name, 'bob@example.com' AS email,
+'$2a$10$DKttTHsOiJXYOpD0ulREqOke67Nh.XGmYmDT9eqQ46iNcB1V6Drm.' AS password, 'USER' AS role
 WHERE NOT EXISTS (
     SELECT 1 FROM users WHERE email = 'bob@example.com'
 );
 
 INSERT INTO users (name, email,password ,role)
-SELECT 'Charlie' AS name, 'charlie@example.com' AS email
-'' AS password, 'USER' AS role
+SELECT 'Charlie' AS name, 'charlie@example.com' AS email,
+'$2a$10$DKttTHsOiJXYOpD0ulREqOke67Nh.XGmYmDT9eqQ46iNcB1V6Drm.' AS password, 'USER' AS role
 
 WHERE NOT EXISTS (
     SELECT 1 FROM users WHERE email = 'charlie@example.com'
@@ -24,10 +24,10 @@ WHERE NOT EXISTS (
 
 INSERT INTO users (name, email,password ,role)
 SELECT 'Admin' AS name, 'admin@example.com' AS email,
-'' AS password, 'ADMIN' AS role
+'$2a$10$O0bjOCPiMIBrJpPT0mRloux3P3YGAhYarsysvRxdUXO9Q36Ass3wW' AS password, 'ADMIN' AS role
 
 WHERE NOT EXISTS (
-    SELECT 1 FROM users WHERE email = 'charlie@example.com'
+    SELECT 1 FROM users WHERE email = 'admin@example.com'
 );
 
 

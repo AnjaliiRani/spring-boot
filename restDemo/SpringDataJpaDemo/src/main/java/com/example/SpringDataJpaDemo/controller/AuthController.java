@@ -1,9 +1,7 @@
 package com.example.SpringDataJpaDemo.controller;
 
 import com.example.SpringDataJpaDemo.service.AuthService;
-import dto.CreateOrderDto;
-import dto.CreateUserDto;
-import dto.RegisterUserResponseDto;
+import dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +18,12 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<RegisterUserResponseDto>registerUser(@RequestBody CreateUserDto createUserDto){
-
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.registerUser(createUserDto));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponseDto>login (@RequestBody LoginDto loginDto){
+        return ResponseEntity.status(HttpStatus.OK).body(authService.login(loginDto));
     }
 }
 

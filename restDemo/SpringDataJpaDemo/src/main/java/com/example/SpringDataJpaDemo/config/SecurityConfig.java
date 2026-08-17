@@ -19,7 +19,7 @@ public class SecurityConfig {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth  ->
-                        auth.requestMatchers("api/v1/auth/**").permitAll()
+                        auth.requestMatchers("/api/v1/auth/**").permitAll()
                                 .requestMatchers(HttpMethod.POST,"/api/v1/users").permitAll()
                         .requestMatchers("/api/v1/users/*/orders/**").hasAnyRole("ADMIN","USER")
                                 .requestMatchers("/api/v1/users/**").hasRole("ADMIN")

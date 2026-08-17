@@ -4,8 +4,11 @@ import com.example.SpringDataJpaDemo.entities.Role;
 import com.example.SpringDataJpaDemo.entities.User;
 import com.example.SpringDataJpaDemo.repository.UserRepository;
 import dto.CreateUserDto;
+import dto.LoginDto;
+import dto.LoginResponseDto;
 import dto.RegisterUserResponseDto;
 import lombok.AllArgsConstructor;
+import org.jspecify.annotations.Nullable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +16,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class AuthService {
     private final PasswordEncoder passwordEncoder;
-    private final UserRepository userRepository
+    private final UserRepository userRepository;
 
     public RegisterUserResponseDto registerUser(CreateUserDto createUserDto){
         User user= new User();
@@ -24,5 +27,8 @@ public class AuthService {
 
         User savedUser = userRepository.save(user);
         return new RegisterUserResponseDto(savedUser.getName(), savedUser.getId());
+    }
+
+    public @Nullable LoginResponseDto login(LoginDto loginDto) {
     }
 }
