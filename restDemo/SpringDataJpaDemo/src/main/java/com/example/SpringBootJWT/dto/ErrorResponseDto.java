@@ -1,4 +1,4 @@
-package dto;
+package com.example.SpringBootJWT.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

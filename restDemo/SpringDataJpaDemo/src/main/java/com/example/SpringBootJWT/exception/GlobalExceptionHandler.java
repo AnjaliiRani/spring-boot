@@ -1,6 +1,6 @@
 package com.example.SpringBootJWT.exception;
 
-import dto.ErrorResponseDto;
+import com.example.SpringBootJWT.dto.ErrorResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

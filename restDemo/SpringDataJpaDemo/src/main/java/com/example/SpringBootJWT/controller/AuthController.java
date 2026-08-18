@@ -1,7 +1,10 @@
 package com.example.SpringBootJWT.controller;
 
+import com.example.SpringBootJWT.dto.CreateUserDto;
+import com.example.SpringBootJWT.dto.LoginDto;
+import com.example.SpringBootJWT.dto.LoginResponseDto;
+import com.example.SpringBootJWT.dto.RegisterUserResponseDto;
 import com.example.SpringBootJWT.service.AuthService;
-import dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
