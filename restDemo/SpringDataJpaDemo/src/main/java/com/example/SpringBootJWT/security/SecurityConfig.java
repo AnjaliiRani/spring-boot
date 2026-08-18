@@ -1,5 +1,6 @@
 package com.example.SpringBootJWT.security;
 
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -11,9 +12,13 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
+@AllArgsConstructor
 public class SecurityConfig {
+    private final JwtAuthFilter jwtAuthFilter;
+
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) {
@@ -25,7 +30,8 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST,"/api/v1/users").permitAll()
                         .requestMatchers("/api/v1/users/*/orders/**").hasAnyRole("ADMIN","USER")
                                 .requestMatchers("/api/v1/users/**").hasRole("ADMIN")
-                                .anyRequest().authenticated());
+                                .anyRequest().authenticated())
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
 
         return httpSecurity.build();
