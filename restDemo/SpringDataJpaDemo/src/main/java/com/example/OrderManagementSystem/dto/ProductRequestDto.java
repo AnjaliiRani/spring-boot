@@ -24,4 +24,8 @@ public class ProductRequestDto {
 
     /** When null on create, defaults to true. */
     private Boolean active;
+
+    public ProductRequestDto() {
+
+    }
 }

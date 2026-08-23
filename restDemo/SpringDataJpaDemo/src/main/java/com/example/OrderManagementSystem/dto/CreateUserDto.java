@@ -23,4 +23,8 @@ public class CreateUserDto {
     @NotNull
     @NotBlank
     private String password;
+
+    public CreateUserDto() {
+
+    }
 }

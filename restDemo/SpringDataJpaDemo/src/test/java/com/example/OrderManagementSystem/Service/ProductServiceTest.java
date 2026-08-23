@@ -96,9 +96,6 @@ class ProductServiceTest {
 
         ProductRequestDto dto =
                 new ProductRequestDto(
-                        " Laptop ",
-                        BigDecimal.valueOf(50000.0),
-                        true
                 );
 
         when(productRepository.existsByNameIgnoreCase("Laptop"))
@@ -131,9 +128,6 @@ class ProductServiceTest {
 
         ProductRequestDto dto =
                 new ProductRequestDto(
-                        "Laptop",
-                        BigDecimal.valueOf(50000.0),
-                        true
                 );
 
         when(productRepository.existsByNameIgnoreCase("Laptop"))
@@ -162,9 +156,6 @@ class ProductServiceTest {
 
         ProductRequestDto dto =
                 new ProductRequestDto(
-                        "New Laptop",
-                        BigDecimal.valueOf(55000.0),
-                        false
                 );
 
         when(productRepository.findById(1L))
