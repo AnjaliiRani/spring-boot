@@ -209,5 +209,44 @@ class ProductServiceTest {
 
         verify(productRepository).findById(1L);
     }
+    void shouldUpdateProduct() {
+
+        Product existing = new Product();
+        existing.setId(1L);
+        existing.setName("Old Laptop");
+        existing.setPrice(BigDecimal.valueOf(40000.0));
+        existing.setActive(true);
+
+        ProductRequestDto dto =
+                new ProductRequestDto(
+                        "New Laptop",
+                        BigDecimal.valueOf(55000.0),
+                        false
+                );
+
+        when(productRepository.findById(1L))
+                .thenReturn(Optional.of(existing));
+
+        when(productRepository
+                .existsByNameIgnoreCaseAndIdNot(
+                        "New Laptop",
+                        1L))
+                .thenReturn(false);
+
+        when(productRepository.save(any(Product.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
+
+        ProductDto result =
+                productService.update(1L, dto);
+
+        assertThat(result.getName())
+                .isEqualTo("New Laptop");
+
+        assertThat(result.getPrice())
+                .isEqualTo(BigDecimal.valueOf(55000.0));
+
+        assertThat(result.isActive())
+                .isFalse();
+    }
 }
 
